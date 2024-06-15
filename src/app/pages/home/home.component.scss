@@ -1,0 +1,12 @@
+.home-block {
+    width: 800px;
+    margin: 100px auto;
+    background-color: #ededed;
+    padding: 150px;
+}
+
+.info-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

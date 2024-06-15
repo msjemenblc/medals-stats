@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    font-family: Roboto, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.info-widget {
+    border: 4px rgb(6, 184, 194) solid;
+    border-radius: 6px;
+    padding: 0px 10px;
+    text-align: center;
+}
