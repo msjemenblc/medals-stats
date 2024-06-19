@@ -1,4 +1,8 @@
 <div class="home-block">
+    <div class="title-block">
+        <p>Medals per Country</p>
+    </div>
+
     <div class="info-block">
         <div class="info-widget">
             <p>Number of JOs</p>
@@ -10,8 +14,14 @@
         </div>
     </div>
 
-    <div>
-
+    <div class="pie-block">
+        <canvas
+            baseChart
+            [data]="pieChartData"
+            [type]="pieChartType"
+            [options]="pieChartOptions"
+        >
+      </canvas>
     </div>
 </div>
 

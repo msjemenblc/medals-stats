@@ -1,12 +1,22 @@
 .home-block {
-    width: 800px;
+    width: 950px;
     margin: 100px auto;
     background-color: #ededed;
-    padding: 150px;
+    padding: 50px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .info-block {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 20px 0px;
+}
+
+.pie-block {
+    width: 300px;
+    padding-top: 65px;
 }
