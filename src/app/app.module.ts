@@ -2,17 +2,26 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+
+// Components
+import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+
+// Charts
 import { BaseChartDirective } from 'ng2-charts';
 import { Chart, registerables } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
+// Font Awesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({ 
     declarations: [
-        AppComponent, 
-        HomeComponent, 
+        HeaderComponent,
+        AppComponent,
+        HomeComponent,
         NotFoundComponent
     ],
     bootstrap: [
@@ -21,11 +30,12 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
     imports: [
         BrowserModule, 
         AppRoutingModule,
-        BaseChartDirective
-    ], 
+        BaseChartDirective,
+        FontAwesomeModule
+    ],
     providers: [
         provideHttpClient(withInterceptorsFromDi())
-    ] 
+    ],
 })
 
 export class AppModule {

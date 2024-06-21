@@ -5,6 +5,7 @@ import { Country } from 'src/app/core/models/Country';
 import { CountryService } from 'src/app/core/services/country.service';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-home',
@@ -20,6 +21,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     public numberOfJOs$: Observable<number | null>;
 
     private destroy$: Subject<void> = new Subject<void>();
+
+    faTrophy = faTrophy
+
 
     // Pie 
     public pieChartOptions: ChartConfiguration['options'] = {
@@ -40,6 +44,33 @@ export class HomeComponent implements OnInit, OnDestroy {
                     weight: "bold"
                 }
             },
+            tooltip: {
+                titleFont: {
+                    size: 17,
+                    weight: 'bold'
+                },
+                bodyFont: {
+                    size: 15,
+                },
+                bodyAlign: 'left',
+                padding: {
+                    x: 10,
+                    y: 5
+                },
+                backgroundColor: '#0c686b',
+                usePointStyle: true,
+                callbacks: {
+                    labelPointStyle: (context) => {
+
+                        let img = new Image(15, 15)
+                        img.src = "../../../assets/medal-solid.svg"
+                        return {
+                            pointStyle: img,
+                            rotation: 0
+                        }
+                    },
+                }
+            }
         },
     };
     public pieChartData: ChartData<'pie', number[], string | string[]> = {

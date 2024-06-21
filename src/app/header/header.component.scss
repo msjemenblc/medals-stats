@@ -1,0 +1,55 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 25px;
+    color: #FFFFFF;
+    background-color: rgb(7, 57, 58);
+}
+
+.icon {
+    width: 25%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    a {
+        font-size: 25px;
+    }
+
+    .icon-gold {
+        font-size: 35px;
+        color: #e4c32f;
+    }
+
+    .icon-silver {
+        font-size: 30px;
+        color: #b1aaaa;
+    }
+
+    .icon-bronze {
+        color: #bd7542;
+    }
+}
+
+.tabs {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.login {
+    width: 25%;
+    text-align: right;
+}
