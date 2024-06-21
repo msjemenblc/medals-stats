@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DetailsComponent } from './pages/details/details.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 // Charts
@@ -22,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         HeaderComponent,
         AppComponent,
         HomeComponent,
+        DetailsComponent,
         NotFoundComponent
     ],
     bootstrap: [

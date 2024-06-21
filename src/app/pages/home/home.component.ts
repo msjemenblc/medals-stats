@@ -3,9 +3,10 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Country } from 'src/app/core/models/Country';
 import { CountryService } from 'src/app/core/services/country.service';
-import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { ActiveElement, Chart, ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     private destroy$: Subject<void> = new Subject<void>();
 
-    faTrophy = faTrophy
+    // Icons declaration
+    faTrophy = faTrophy;
 
 
     // Pie 
@@ -72,19 +74,29 @@ export class HomeComponent implements OnInit, OnDestroy {
                 }
             }
         },
+        onClick: (
+            event: ChartEvent,
+            elements: ActiveElement[],
+            chart: Chart<'bar'>
+        ) => {
+            if (elements[0]) {
+                this.showDetails(elements[0].index);
+            }
+          },
     };
     public pieChartData: ChartData<'pie', number[], string | string[]> = {
         labels: [],
         datasets: [
             {
                 data: [],
-                backgroundColor: ['#EF9C66', '#FCDC94', '#C8CFA0', '#78ABA8'],
+                backgroundColor: ['#EF9C66', '#FCDC94', '#C8CFA0', '#78ABA8', '#E7F0DC'],
             },
         ],
     };
     public pieChartType: ChartType = 'pie';
 
-    constructor(private countryService: CountryService) {
+    constructor(private countryService: CountryService,
+                private router: Router) {
         this.countries$ = this.countryService.getCountries();
         this.numberOfCountries$ = this.countryService.getNumberOfCountries();
         this.numberOfJOs$ = this.countryService.getNumberOfJOs();
@@ -113,5 +125,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();
+    }
+
+    private showDetails(countryIndex: number) {
+        this.router.navigateByUrl(`details/${countryIndex + 1}`);
     }
 }

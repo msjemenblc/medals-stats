@@ -30,10 +30,22 @@ export class CountryService {
         return this.countries$.asObservable();
     }
 
+    getCountryById(countryId: number): Observable<Country | null> {
+        return this.countries$.pipe(
+            map(countries => {
+                if (!countries) {
+                    return null;
+                }
+                const country = countries.find(c => c.id === countryId);
+                return country ? country : null;
+            })
+        );
+    }
+
     getNumberOfCountries(): Observable<number> {
         return this.countries$.pipe(
             map(countries => countries ? countries.length : 0)
-        )
+        );
     }
 
     getNumberOfJOs(): Observable<number> {
