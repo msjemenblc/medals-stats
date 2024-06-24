@@ -3,13 +3,18 @@ a {
     color: inherit;
 }
 
+.active {
+    font-weight: bold;
+    color: #ffffff;
+}
+
 header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 10px 25px;
-    color: #FFFFFF;
+    color: #ededed;
     background-color: rgb(7, 57, 58);
 }
 
