@@ -1,8 +1,13 @@
+// Angular imports
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, take, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
+
+// Service & Model imports
 import { Country } from 'src/app/core/models/Country';
 import { CountryService } from 'src/app/core/services/country.service';
-import { Router } from '@angular/router';
+
+// Icon imports
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -10,12 +15,14 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
     templateUrl: './details-list.component.html',
     styleUrls: ['./details-list.component.scss'],
 })
-
 export class DetailsListComponent implements OnInit, OnDestroy {
-    faArrowLeft = faArrowLeft
+    // Observable declaration
     public countries$: Observable<Country[] | null>;
-
+    
     private destroy$: Subject<void> = new Subject<void>();
+    
+    // Icon declaration
+    faArrowLeft = faArrowLeft;
 
     constructor(private countryService: CountryService,
                 private router: Router) {

@@ -5,13 +5,3 @@ export class Country {
                 public country: string,
                 public participations: Participation[]) {}
 }
-
-
-/*
-example of an olympic country:
-{
-    id: 1,
-    country: "Italy",
-    participations: []
-}
-*/

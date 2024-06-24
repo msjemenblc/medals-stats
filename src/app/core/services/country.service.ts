@@ -1,14 +1,16 @@
+// Angular imports
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+
+// Model imports
 import { Participation } from '../models/Participation';
 import { Country } from '../models/Country';
 
 @Injectable({
     providedIn: 'root',
 })
-
 export class CountryService {
     private countryUrl = './assets/mock/countries.json';
     private countries$ = new BehaviorSubject<Country[] | null>(null);

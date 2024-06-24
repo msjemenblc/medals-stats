@@ -1,24 +1,28 @@
+// Angular imports
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject, switchMap, takeUntil } from 'rxjs';
+
+// Service & Model imports
 import { Country } from 'src/app/core/models/Country';
 import { CountryService } from 'src/app/core/services/country.service';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+// Chart imports
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
+// Icon imports
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-details',
     templateUrl: './details.component.html',
     styleUrls: ['./details.component.scss'],
 })
-
 export class DetailsComponent implements OnInit, OnDestroy {
     @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
-    faArrowLeft = faArrowLeft;
-
+    // Observable declarations
     public country$: Observable<Country | null>;
     public numberOfParticipations$: Observable<number | null>;
     public numberOfMedals$: Observable<number | null>;
@@ -26,7 +30,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
     private destroy$: Subject<void> = new Subject<void>();
 
-    // Line 
+    // Icon declaration
+    faArrowLeft = faArrowLeft;
+
+    // Pie configuration // Using Chart.js
     public lineChartOptions: ChartConfiguration['options'] = {
         layout: {
             padding: {
@@ -147,17 +154,16 @@ export class DetailsComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.destroy$))
             .subscribe(country => {
                 if (country) {
+                    // Using datas subscribed to update the line chart
                     const labels = country.participations.map(participation => participation.year.toString());
                     const data = country.participations.map(participation => participation.medalsCount);
           
                     this.lineChartData.labels = labels;
                     this.lineChartData.datasets[0].data = data;
           
-                    if (this.chart) {
-                        this.chart.update();
-                    }
-        }
-      });
+                    if (this.chart) this.chart.update();
+                }
+            });
     }
 
     ngOnDestroy(): void {

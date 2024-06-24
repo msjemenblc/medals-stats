@@ -1,22 +1,29 @@
+// Angular imports
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+// Service & Model imports
 import { Country } from 'src/app/core/models/Country';
 import { CountryService } from 'src/app/core/services/country.service';
+
+// Chart imports
 import { ActiveElement, Chart, ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+
+// Icon imports
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
 })
-
 export class HomeComponent implements OnInit, OnDestroy {
     @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
     
+    // Observable declarations
     public countries$: Observable<Country[] | null>;
     public numberOfCountries$: Observable<number | null>;
     public numberOfJOs$: Observable<number | null>;
@@ -26,8 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     // Icons declaration
     faTrophy = faTrophy;
 
-
-    // Pie 
+    // Pie configuration // Using Chart.js
     public pieChartOptions: ChartConfiguration['options'] = {
         plugins: {
             legend: {
@@ -107,6 +113,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.destroy$))
             .subscribe(countries => {
                 if (countries) {
+                    // Using datas subscribed to update the pie chart
                     const labels = countries.map(country => country.country);
                     const data = countries.map(country =>
                         country.participations.reduce((sum, participation) => sum + participation.medalsCount, 0)
@@ -128,6 +135,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     private showDetails(countryIndex: number) {
+        // Method called when clicking on a pie section
         this.router.navigateByUrl(`details/${countryIndex + 1}`);
     }
 }
