@@ -1,7 +1,44 @@
-<div *ngIf="country$ | async as country">
+<div class="root-block">
+    <div class="title-block" *ngIf="country$ | async as country">
+        <p>{{ country.country }}</p>
+    </div>
+
+    <div class="info-block">
+        <div class="info-widget">
+            <p>Number of entries</p>
+            <b><p>{{ numberOfParticipations$ | async }}</p></b>
+        </div>
+        <div class="info-widget">
+            <p>Total number medals</p>
+            <b><p>{{ numberOfMedals$ | async }}</p></b>
+        </div>
+        <div class="info-widget">
+            <p>Total number of athletes</p>
+            <b><p>{{ numberOfAthletes$ | async }}</p></b>
+        </div>
+    </div>
+
+    <div class="chart-block">
+        <canvas
+            baseChart
+            [data]="lineChartData"
+            [type]="lineChartType"
+            [options]="lineChartOptions"
+        >
+        </canvas>
+    </div>
+
+    <a class="go-back" routerLink="">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>
+        &nbsp;<span>Go back</span>
+    </a>
+</div>
+
+
+<!-- <div *ngIf="country$ | async as country">
     <h1>{{ country.country }}</h1>
-    <!-- Afficher d'autres détails du pays ici -->
+    Afficher d'autres détails du pays ici
 </div>
 <div *ngIf="!(country$ | async)">
     <p>Country not found.</p>
-</div>
+</div> -->

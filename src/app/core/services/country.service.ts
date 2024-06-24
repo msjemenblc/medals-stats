@@ -33,23 +33,75 @@ export class CountryService {
     getCountryById(countryId: number): Observable<Country | null> {
         return this.countries$.pipe(
             map(countries => {
-                if (!countries) {
-                    return null;
-                }
+                if (!countries) return null;
+
                 const country = countries.find(c => c.id === countryId);
                 return country ? country : null;
             })
         );
     }
 
-    getNumberOfCountries(): Observable<number> {
+    getCountryParticipationsById(countryId: number): Observable<number | null> {
+        return this.countries$.pipe(
+            map(countries => {
+                if (!countries) return null;
+
+                const country = countries.find(c => c.id === countryId);
+                if (!country) return null;
+
+                return country.participations.length;
+            })
+        )
+    }
+
+    getCountryMedalsById(countryId: number): Observable<number | null> {
+        return this.countries$.pipe(
+            map(countries => {
+                if (!countries) return null;
+      
+                const country = countries.find(c => c.id === countryId);
+                if (!country) return null;
+      
+                return country.participations.reduce((sum, participation) => sum + participation.medalsCount, 0);
+            })
+        );
+    }
+
+    getCountryAthletesById(countryId: number): Observable<number | null> {
+        return this.countries$.pipe(
+            map(countries => {
+                if (!countries) return null;
+
+                const country = countries.find(c => c.id === countryId);
+                if (!country) return null;
+
+                return country.participations.reduce((sum, participation) => sum + participation.athleteCount, 0);
+            })
+        )
+    }
+
+    getNumberOfCountries(): Observable<number | null> {
         return this.countries$.pipe(
             map(countries => countries ? countries.length : 0)
         );
     }
 
-    getNumberOfJOs(): Observable<number> {
-        return of(140);
+    getNumberOfJOs(): Observable<number | null> {
+        return this.countries$.pipe(
+            map(countries => {
+              if (!countries) return 0;
+      
+              const yearsSet = new Set<number>();
+      
+              countries.forEach(country => {
+                country.participations.forEach(participation => {
+                  yearsSet.add(participation.year);
+                });
+              });
+      
+              return yearsSet.size;
+            })
+          );
     }
 
     private mapCountryData(data: Country[]): Country[] {

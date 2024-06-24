@@ -9,22 +9,3 @@
     flex-direction: column;
     gap: 30px;
 }
-
-.go-back {
-    text-decoration: none;
-    color: #0c686b;
-    font-size: 25px;
-    font-weight: bold;
-    
-    span {
-        transition: padding-left 0.5s;
-    }
-}
-
-.go-back:hover {
-    span {
-        text-decoration: underline;
-        padding-left: 7px;
-        transition: padding-left 0.3s;
-    }
-}
