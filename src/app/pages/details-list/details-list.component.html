@@ -1,0 +1,18 @@
+<div class="root-block">
+    <div class="title-block">
+        <p>Countries</p>
+    </div>
+
+    <div class="info-block" *ngIf="countries$ | async as countries">
+        <div *ngFor="let country of countries">
+            <div [routerLink]="'/details/' + country.id" class="info-widget">
+                <p>{{ country.country }}</p>
+            </div>
+        </div>
+    </div>
+
+    <a class="go-back" routerLink="">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>
+        &nbsp;<span>Go back</span>
+    </a>
+</div>

@@ -3,11 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { DetailsListComponent } from './pages/details-list/details-list.component';
 
 const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
+    },
+    {
+        path: 'details',
+        component: DetailsListComponent,
     },
     {
         path: 'details/:id',

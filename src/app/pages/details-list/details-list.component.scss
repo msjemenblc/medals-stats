@@ -1,0 +1,18 @@
+.info-block {
+    flex-direction: column;
+    gap: 13px;
+}
+
+.info-widget {
+    width: 300px;
+    padding: 0 inherit;
+    transition: padding 0.5s, border 0.5s;
+}
+
+.info-widget:hover {
+    cursor: pointer;
+    padding: 5px 30px;
+    border: 5px #0c686b solid;
+    box-shadow: #64646f9c 0px 7px 29px 0px;
+    transition: padding 0.3s, border 0.3s;
+}

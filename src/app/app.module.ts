@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DetailsListComponent } from './pages/details-list/details-list.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
@@ -23,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         HeaderComponent,
         AppComponent,
         HomeComponent,
+        DetailsListComponent,
         DetailsComponent,
         NotFoundComponent
     ],
