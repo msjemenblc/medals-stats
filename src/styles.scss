@@ -5,12 +5,11 @@
 body {
     margin: 0;
     padding: 0;
-    line-height: 50%;
     background-color: #d9d9d9;
 }
 
 .root-block {
-    width: 1500px;
+    width: 100%;
     margin: 60px auto;
     display: flex;
     flex-direction: column;

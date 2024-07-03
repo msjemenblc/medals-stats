@@ -9,6 +9,7 @@ a {
 }
 
 header {
+    line-height: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,27 +21,9 @@ header {
 
 .icon {
     width: 25%;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
 
-    a {
-        font-size: 25px;
-    }
-
-    .icon-gold {
-        font-size: 35px;
-        color: #e4c32f;
-    }
-
-    .icon-silver {
-        font-size: 30px;
-        color: #b1aaaa;
-    }
-
-    .icon-bronze {
-        color: #bd7542;
+    img {
+        width: 75px;
     }
 }
 
