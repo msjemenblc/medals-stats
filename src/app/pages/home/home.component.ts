@@ -12,9 +12,6 @@ import { CountryService } from 'src/app/core/services/country.service';
 import { ActiveElement, Chart, ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
-// Icon imports
-import { faTrophy } from '@fortawesome/free-solid-svg-icons';
-
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -29,9 +26,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     public numberOfJOs$: Observable<number | null>;
 
     private destroy$: Subject<void> = new Subject<void>();
-
-    // Icons declaration
-    faTrophy = faTrophy;
 
     // Pie configuration // Using Chart.js
     public pieChartOptions: ChartConfiguration['options'] = {
