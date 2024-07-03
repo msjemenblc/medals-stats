@@ -6,10 +6,10 @@ Don't forget to install your node_modules before starting (`npm install`).
 
 ## Dependencies
 
-FontAwesome               6.5.2
-Chart.js                  4.4.3
-chartjs-plugin-datalabels 2.2.0
-ng2-charts                6.0.1
+- FontAwesome               6.5.2
+- Chart.js                  4.4.3
+- chartjs-plugin-datalabels 2.2.0
+- ng2-charts                6.0.1
 
 ## Development server
 
