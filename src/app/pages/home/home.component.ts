@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.destroy$.complete();
     }
 
-    private showDetails(countryIndex: number) {
+    private showDetails(countryIndex: number): void {
         // Method called when clicking on a pie section
         this.router.navigateByUrl(`details/${countryIndex + 1}`);
     }
